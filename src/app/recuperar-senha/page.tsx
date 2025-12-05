@@ -39,8 +39,8 @@ export default function ForgotPasswordPage() {
         <label htmlFor="email">E-mail</label>
         <Input id="email" type="email" {...register('email')} />
 
-        <button type="submit" disabled={mutation.isLoading} style={{ padding: '8px 12px' }}>
-          {mutation.isLoading ? 'Enviando...' : 'Enviar instruções'}
+        <button type="submit" disabled={mutation.isPending} style={{ padding: '8px 12px' }}>
+          {mutation.isPending ? 'Enviando...' : 'Enviar instruções'}
         </button>
       </form>
     </main>

@@ -3,9 +3,9 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Input } from "../../../../components/input/input";
-import { toast } from "../../../../components/ui/toast";
-import { useResetPassword } from "../../../../services/auth";
+import { Input } from "../../../components/input/input";
+import { toast } from "../../../components/ui/toast";
+import { useResetPassword } from "../../../services/auth";
 
 interface Props {
   token: string;
@@ -51,8 +51,8 @@ export default function ResetPasswordClient({ token }: Props) {
         <label htmlFor="confirmPassword">Confirme a nova senha</label>
         <Input id="confirmPassword" type="password" {...register('confirmPassword')} />
 
-        <button type="submit" disabled={mutation.isLoading} style={{ padding: '8px 12px' }}>
-          {mutation.isLoading ? 'Enviando...' : 'Redefinir senha'}
+        <button type="submit" disabled={mutation.isPending} style={{ padding: '8px 12px' }}>
+          {mutation.isPending ? 'Enviando...' : 'Redefinir senha'}
         </button>
       </form>
     </main>
