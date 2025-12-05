@@ -34,9 +34,11 @@ async function fetchConsultasAdmin(filters: ConsultasAdminFilters) {
   if (filters.from) params.set("from", filters.from);
   if (filters.to) params.set("to", filters.to);
 
-  const { data } = await api.get<ConsultaAdminDTO[]>(
-    `/medlink/admin/consultas?${params.toString()}`,
-  );
+  const url = `/medlink/admin/consultas?${params.toString()}`;
+  console.log("🔍 Buscando consultas com filtros:", filters);
+  console.log("🌐 URL completa:", url);
+
+  const { data } = await api.get<ConsultaAdminDTO[]>(url);
   return data ?? [];
 }
 
