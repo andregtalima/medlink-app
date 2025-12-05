@@ -76,13 +76,13 @@ export const useAdminLogin = () => {
       const redirect = search.get("redirect");
 
       if (redirect) {
-        router.push(redirect);
+        window.location.href = redirect;
       } else if (isAdmin) {
-        router.push("/admin");
+        window.location.href = "/admin";
       } else if (isMedico) {
-        router.push("/medico");
+        window.location.href = "/medico";
       } else {
-        router.push("/admin");
+        window.location.href = "/admin";
       }
     },
   });
