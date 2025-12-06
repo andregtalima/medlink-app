@@ -62,6 +62,7 @@ export default function RegisterPage() {
   const emailError = form.formState.errors.email?.message;
   const phoneError = form.formState.errors.phone?.message;
   const passwordError = form.formState.errors.password?.message;
+  const confirmPasswordError = form.formState.errors.confirmPassword?.message;
 
   return (
     <main className={`${styles.register} ${styles.container}`}>
@@ -106,7 +107,8 @@ export default function RegisterPage() {
               errors.name?.message ||
               errors.email?.message ||
               errors.phone?.message ||
-              errors.password?.message;
+              errors.password?.message ||
+              errors.confirmPassword?.message;
             if (firstMsg) toast.info(firstMsg);
           })}
           noValidate
@@ -191,6 +193,23 @@ export default function RegisterPage() {
               {passwordError && (
                 <div id="password-error" className={styles["form-error"]}>
                   {passwordError}
+                </div>
+              )}
+            </div>
+
+            <div className={styles["form-field"]}>
+              <label htmlFor="confirmPassword">Confirme sua senha</label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirme sua senha"
+                disabled={isPending}
+                error={confirmPasswordError as string | undefined}
+                {...form.register("confirmPassword")}
+              />
+              {confirmPasswordError && (
+                <div id="confirmPassword-error" className={styles["form-error"]}>
+                  {confirmPasswordError}
                 </div>
               )}
             </div>
